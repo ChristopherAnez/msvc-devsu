@@ -1,0 +1,95 @@
+version: '3.8'
+
+services:
+  postgres-account:
+    image: postgres:14-alpine
+    container_name: postgres-account
+    environment:
+      POSTGRES_DB: account_management_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    volumes:
+      - account_db_data:/var/lib/postgresql/data
+    networks:
+      - microservices-net
+
+  postgres-user:
+    image: postgres:14-alpine
+    container_name: postgres-user
+    environment:
+      POSTGRES_DB: user_management_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    volumes:
+      - user_db_data:/var/lib/postgresql/data
+    networks:
+      - microservices-net
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres-account
+      - postgres-user
+    networks:
+      - microservices-net
+
+  msvc-cuenta-movimiento:
+    image: coanezp/msvc-cuenta-movimiento:latest
+    environment:
+      DB_HOST: postgres-account
+      DB_DATABASE: account_management_db
+      DB_USERNAME: postgres
+      DB_PASSWORD: admin
+      PORT: 8082
+    ports:
+      - "8082:8082"
+    depends_on:
+      - postgres-account
+    networks:
+      - microservices-net
+
+  msvc-cliente-persona:
+    image: coanezp/msvc-cliente-persona:latest
+    environment:
+      DB_HOST: postgres-user
+      DB_DATABASE: user_management_db
+      DB_USERNAME: postgres
+      DB_PASSWORD: admin
+      PORT: 8081
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres-user
+    networks:
+      - microservices-net
+
+  msvc-orquestador:
+    image: coanezp/msvc-orquestador:latest
+    environment:
+      MSVC_CLIENTE_SERVICE_HOST: msvc-cliente-persona
+      MSVC_CLIENTE_SERVICE_PORT: 8081
+      MSVC_CUENTAS_SERVICE_HOST: msvc-cuenta-movimiento
+      MSVC_CUENTAS_SERVICE_PORT: 8082
+      MSVC_MOVIMIENTOS_SERVICE_HOST: msvc-cuenta-movimiento
+      MSVC_MOVIMIENTOS_SERVICE_PORT: 8082
+      PORT: 8083
+    ports:
+      - "8083:8083"
+    depends_on:
+      - msvc-cuenta-movimiento
+      - msvc-cliente-persona
+    networks:
+      - microservices-net
+
+volumes:
+  account_db_data:
+  user_db_data:
+
+networks:
+  microservices-net:
