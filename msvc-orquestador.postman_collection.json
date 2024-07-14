@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "b6487d55-6fbd-4f3c-92d0-dcb3871a372a",
+		"name": "msvc-orquestador",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16819975"
+	},
+	"item": [
+		{
+			"name": "crear-cliente-cuenta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Valentina Reyes\",\r\n    \"genero\": \"Femenino\",\r\n    \"edad\": 32,\r\n    \"identificacion\": \"V-20777904\",\r\n    \"direccion\": \"Sector La Lago\",\r\n    \"telefono\": \"+584143603151\",\r\n    \"contrasena\": \"password123\",\r\n    \"estado\": true,\r\n    \"numeroCuenta\": \"8529637412\",\r\n    \"tipoCuenta\": \"CORRIENTE\",\r\n    \"saldoInicial\": 750,\r\n    \"saldoDisponible\": 750\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/api/cuentas-clientes/crear/cliente",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"cuentas-clientes",
+						"crear",
+						"cliente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear-cuenta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idCliente\": 2,\r\n    \"numeroCuenta\": \"123456789\",\r\n    \"tipoCuenta\": \"AHORRO\",\r\n    \"saldoInicial\": 1600\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/cuentas-clientes/crear/cuenta",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cuentas-clientes",
+						"crear",
+						"cuenta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar-clientes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/api/cuentas-clientes/listar",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"cuentas-clientes",
+						"listar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "estado-cuenta-clienteid",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/api/reportes?fechaInicio=2024-07-13&fechaFin=2024-07-13&clienteId=2",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"reportes"
+					],
+					"query": [
+						{
+							"key": "fechaInicio",
+							"value": "2024-07-13"
+						},
+						{
+							"key": "fechaFin",
+							"value": "2024-07-13"
+						},
+						{
+							"key": "clienteId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "listar-movimiento-fecha-cuenta",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/reportes?fechaInicio=2023-01-01&fechaFin=2024-12-31&clienteId=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reportes"
+							],
+							"query": [
+								{
+									"key": "fechaInicio",
+									"value": "2023-01-01"
+								},
+								{
+									"key": "fechaFin",
+									"value": "2024-12-31"
+								},
+								{
+									"key": "clienteId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"clienteId\": 2,\n        \"nombreCliente\": \"Marcus Londres\",\n        \"cuentas\": [\n            {\n                \"numeroCuenta\": \"999988885\",\n                \"saldoInicial\": 1259,\n                \"saldoDisponible\": 1259,\n                \"movimientos\": []\n            },\n            {\n                \"numeroCuenta\": \"999988886\",\n                \"saldoInicial\": 1600,\n                \"saldoDisponible\": 1000,\n                \"movimientos\": [\n                    {\n                        \"fecha\": \"2024-07-13\",\n                        \"tipoMovimiento\": \"CREDITO\",\n                        \"valor\": 5,\n                        \"saldo\": 1605\n                    },\n                    {\n                        \"fecha\": \"2024-07-13\",\n                        \"tipoMovimiento\": \"CREDITO\",\n                        \"valor\": 50,\n                        \"saldo\": 1655\n                    },\n                    {\n                        \"fecha\": \"2024-07-13\",\n                        \"tipoMovimiento\": \"CREDITO\",\n                        \"valor\": 55,\n                        \"saldo\": 1710\n                    },\n                    {\n                        \"fecha\": \"2024-07-13\",\n                        \"tipoMovimiento\": \"DEBITO\",\n                        \"valor\": 710,\n                        \"saldo\": 1000\n                    }\n                ]\n            },\n            {\n                \"numeroCuenta\": \"00012345619\",\n                \"saldoInicial\": 250,\n                \"saldoDisponible\": 250,\n                \"movimientos\": []\n            }\n        ]\n    }\n]"
+				}
+			]
+		}
+	]
+}

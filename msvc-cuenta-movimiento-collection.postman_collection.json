@@ -1,0 +1,373 @@
+{
+	"info": {
+		"_postman_id": "20ece221-63bd-4bce-8935-805c73c758f6",
+		"name": "msvc-cuenta-movimiento-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16819975"
+	},
+	"item": [
+		{
+			"name": "cuenta-collection",
+			"item": [
+				{
+					"name": "crear-cuenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_cliente\": 1,\r\n    \"numeroCuenta\": \"0956856235822\",\r\n    \"tipoCuenta\": \"CORRIENTE\",\r\n    \"saldoInicial\": 500,\r\n    \"saldoDisponible\": 500,\r\n    \"estado\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/api/cuentas/crear-cuenta",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"cuentas",
+								"crear-cuenta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar-cuentas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/api/cuentas/listar",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"cuentas",
+								"listar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar-cuentas-clienteid",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/api/cuentas/listar/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"cuentas",
+								"listar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar-cuenta-bycuenta",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_cliente\": 1,\r\n    \"numeroCuenta\": \"0025265950\",\r\n    \"tipoCuenta\": \"CORRIENTE\",\r\n    \"saldoInicial\": 1000,\r\n    \"saldoDisponible\": 1000,\r\n    \"estado\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/api/cuentas/listar/cuenta/0956856235822",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"cuentas",
+								"listar",
+								"cuenta",
+								"0956856235822"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar-cuenta-cuentaid",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_cliente\": 1,\r\n    \"numeroCuenta\": \"0025265950\",\r\n    \"tipoCuenta\": \"CORRIENTE\",\r\n    \"saldoInicial\": 1000,\r\n    \"saldoDisponible\": 1000,\r\n    \"estado\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/api/cuentas/eliminar/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"cuentas",
+								"eliminar",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar-cuenta-cuentaid",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_cuenta\": 1,\r\n    \"id_cliente\": 1,\r\n    \"numeroCuenta\": \"0025265950\",\r\n    \"tipoCuenta\": \"CORRIENTE\",\r\n    \"saldoDisponible\": 600,\r\n    \"estado\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/api/cuentas/actualizar/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"cuentas",
+								"actualizar",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "movimiento-collection",
+			"item": [
+				{
+					"name": "listar-all-movimientos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8082/api/movimientos/listar",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"movimientos",
+								"listar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar-movimiento-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8082/api/movimientos/listar/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"movimientos",
+								"listar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar-movimiento-fecha-cuenta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8082/api/movimientos/listar/mov-cuenta?fechaIni=2024-07-01&fechaFin=2024-07-30&numeroCuenta=0956856235822",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"movimientos",
+								"listar",
+								"mov-cuenta"
+							],
+							"query": [
+								{
+									"key": "fechaIni",
+									"value": "2024-07-01"
+								},
+								{
+									"key": "fechaFin",
+									"value": "2024-07-30"
+								},
+								{
+									"key": "numeroCuenta",
+									"value": "0956856235822"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crear-movimiento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipoMovimiento\": \"CREDITO\",\r\n    \"valor\": 2500,\r\n    \"numeroCuenta\": \"8529637412\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/api/movimientos/crear-movimiento",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"movimientos",
+								"crear-movimiento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar-cuenta-cuentaid",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_cliente\": 1,\r\n    \"numeroCuenta\": \"0025265950\",\r\n    \"tipoCuenta\": \"CORRIENTE\",\r\n    \"saldoInicial\": 1000,\r\n    \"saldoDisponible\": 1000,\r\n    \"estado\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/api/movimientos/eliminar/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"movimientos",
+								"eliminar",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar-cuenta-cuentaid",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"idMovimiento\": 9,\r\n        \"fecha\": \"2024-07-21\",\r\n        \"tipoMovimiento\": \"DEBITO\",\r\n        \"valor\": 1300,\r\n        \"saldo\": 1200,\r\n        \"numeroCuenta\": \"0025265950\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/api/movimientos/actualizar/9",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"movimientos",
+								"actualizar",
+								"9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

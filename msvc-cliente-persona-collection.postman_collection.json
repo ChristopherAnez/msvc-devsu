@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "bbfbc6d3-f18c-4375-863c-39e950d57413",
+		"name": "msvc-cliente-persona-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16819975"
+	},
+	"item": [
+		{
+			"name": "crear-cliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Christopher Añez\",\r\n    \"genero\": \"Masculino\",\r\n    \"edad\": 27,\r\n    \"identificacion\": \"DNI-V25041048\",\r\n    \"direccion\": \"Av 3F, Calle 78, Edif. Dr. Portillo\",\r\n    \"telefono\": \"+584246105820\",\r\n    \"contrasena\": \"MiPassword01\",\r\n    \"estado\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/cliente/crear",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"cliente",
+						"crear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar-cliente-by-personaid",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/cliente/listar/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"cliente",
+						"listar",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar-cliente-all",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/cliente/listar",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"cliente",
+						"listar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar-cliente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"personaId\": 2,\r\n    \"clienteId\": 1,\r\n    \"nombre\": \"Christopher Añez Primera\",\r\n    \"genero\": \"Masculino\",\r\n    \"edad\": 27,\r\n    \"identificacion\": \"DNI-V25041048\",\r\n    \"direccion\": \"Av 3F, Calle 78, Edif. Dr. Portillo\",\r\n    \"telefono\": \"+584246105820\",\r\n    \"contrasena\": \"MiPassword01\",\r\n    \"estado\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/cliente/actualizar/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"cliente",
+						"actualizar",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar-cliente",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/cliente/eliminar/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"cliente",
+						"eliminar",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
